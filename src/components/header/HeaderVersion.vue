@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 17:52:09
- * @LastEditTime: 2022-06-27 20:04:04
+ * @LastEditTime: 2022-06-27 20:20:28
  * @Description:切换版本
 -->
 <template>
@@ -49,7 +49,7 @@ export default {
                 {
                     label: "v2 开发中..",
                     key: "v2",
-                    status: true,
+                    status: false,
                 },
             ],
             BottomRight,

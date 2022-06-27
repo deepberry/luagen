@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:50:00
- * @LastEditTime: 2022-06-27 18:53:27
+ * @LastEditTime: 2022-06-27 20:20:50
  * @Description: 头部
 -->
 <template>
@@ -17,8 +17,10 @@
             <header-version />
         </h1>
         <div class="m-header-meta">
-            <a href="" class="u-help">说明文档</a>
-            <a href="" class="u-github">Github仓库</a>
+            <a href="https://github.com/deepberry/luagen/blob/master/README.md" class="u-help" target="_blank"
+                >使用文档</a
+            >
+            <a href="https://github.com/deepberry/luagen/blob/master/Dev.md" class="u-dev" target="_blank">开发文档</a>
         </div>
     </header>
 </template>
