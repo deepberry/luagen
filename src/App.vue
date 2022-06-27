@@ -1,15 +1,22 @@
+<!--
+ * @Author: iRuxu
+ * @Date: 2022-06-27 15:29:53
+ * @LastEditTime: 2022-06-27 18:46:14
+ * @Description:
+-->
 <template>
-    <!-- <img alt="Vue logo" src="@/assets/img/logo.png" /> -->
-    <!-- <HelloWorld msg="Hello World" /> -->
-    APP
+    <CommonHeader />
     <router-view />
 </template>
 
 <script>
+import CommonHeader from "@/components/header/HeaderRoot.vue";
 export default {
     name: "App",
     props: [],
-    components: {},
+    components: {
+        CommonHeader,
+    },
     data: function () {
         return {};
     },
