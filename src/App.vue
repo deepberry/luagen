@@ -1,12 +1,12 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-06-30 11:40:25
+ * @LastEditTime: 2022-06-30 15:07:23
  * @Description:
 -->
 <template>
     <CommonHeader />
-    <router-view :name="version" />
+    <router-view />
 </template>
 
 <script>
@@ -20,11 +20,7 @@ export default {
     data: function () {
         return {};
     },
-    computed: {
-        version: function () {
-            return this.$store.state.version || "v1";
-        },
-    },
+    computed: {},
     watch: {},
     methods: {},
     created: function () {},

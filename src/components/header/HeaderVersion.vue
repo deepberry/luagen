@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 17:52:09
- * @LastEditTime: 2022-06-30 12:03:40
+ * @LastEditTime: 2022-06-30 12:16:26
  * @Description:切换版本
 -->
 <template>
@@ -31,6 +31,7 @@
 
 <script>
 import { BottomRight, ArrowDown } from "@element-plus/icons-vue";
+import { markRaw } from "vue";
 import pkg from "@/../project.json";
 export default {
     name: "HeaderVersion",
@@ -42,7 +43,7 @@ export default {
         return {
             version: "v1",
             versions: pkg.versions,
-            BottomRight,
+            BottomRight: markRaw(BottomRight),
         };
     },
     computed: {},
@@ -51,6 +52,9 @@ export default {
             immediate: true,
             handler: function (v) {
                 this.version = v;
+                this.$router.push({
+                    name: v,
+                });
             },
         },
     },
