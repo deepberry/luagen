@@ -11,12 +11,14 @@
     },
     "dependencies": {
         "@deepberry/common": "^0.1.2",
+        "@deepberry/luagen-parser": "^0.1.1",
         "@vueuse/head": "^0.7.6",
         "core-js": "^3.8.3",
         "element-plus": "^2.2.5",
         "vue": "^3.2.13",
         "vue-router": "^4.0.16",
-        "vuex": "^4.0.2"
+        "vuex": "^4.0.2",
+        "xlsx": "^0.18.5"
     },
     "devDependencies": {
         "@babel/core": "^7.12.16",

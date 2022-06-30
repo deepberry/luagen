@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-06-30 17:02:00
+ * @LastEditTime: 2022-06-30 17:05:56
  * @Description:v1版本
 -->
 <template>
@@ -9,6 +9,7 @@
         <div class="m-left">
             <template v-if="file">
                 <FileMeta :file="file" @reset="reset" />
+                <FileDisplay :raw="raw" />
             </template>
             <template v-else>
                 <UploadDrag @upload="uploadFile" />
@@ -21,11 +22,13 @@
 <script>
 import UploadDrag from "@/components/parser/UploadDrag.vue";
 import FileMeta from "../components/parser/FileMeta.vue";
+import FileDisplay from "@/components/parser/FileDisplay.vue";
 export default {
     name: "V1Home",
     components: {
         UploadDrag,
         FileMeta,
+        FileDisplay,
     },
     props: [],
     data: function () {

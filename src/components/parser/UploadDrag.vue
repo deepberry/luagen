@@ -1,3 +1,9 @@
+<!--
+ * @Author: iRuxu
+ * @Date: 2022-06-30 16:59:28
+ * @LastEditTime: 2022-06-30 17:58:46
+ * @Description:拖拽上传组件
+-->
 <template>
     <div class="m-upload m-upload__drag">
         <el-upload
@@ -45,7 +51,7 @@ export default {
 };
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 .m-upload__drag {
     padding: 80px;
 }

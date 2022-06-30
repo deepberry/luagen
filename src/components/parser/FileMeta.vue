@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-30 16:59:28
- * @LastEditTime: 2022-06-30 17:02:53
+ * @LastEditTime: 2022-06-30 17:58:37
  * @Description:文件信息
 -->
 <template>
@@ -45,7 +45,7 @@ export default {
 };
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 .m-file-info {
     padding: 10px;
     display: flex;
