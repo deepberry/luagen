@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkluagen"]=self["webpackChunkluagen"]||[]).push([[232],{15:function(n,e,t){t.r(e),t.d(e,{default:function(){return i}});var u=t(252);const r={class:"p-home"};function c(n,e,t,c,o,a){return(0,u.wg)(),(0,u.iD)("div",r,"HOME")}var o={name:"HomeView",props:[],data:function(){return{}},computed:{},methods:{},created:function(){},components:{}},a=t(744);const s=(0,a.Z)(o,[["render",c]]);var i=s}}]);
-//# sourceMappingURL=232.149f4d69.js.map
