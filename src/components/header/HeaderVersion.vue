@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 17:52:09
- * @LastEditTime: 2022-06-27 20:20:28
+ * @LastEditTime: 2022-06-30 12:03:40
  * @Description:切换版本
 -->
 <template>
@@ -31,6 +31,7 @@
 
 <script>
 import { BottomRight, ArrowDown } from "@element-plus/icons-vue";
+import pkg from "@/../project.json";
 export default {
     name: "HeaderVersion",
     props: [],
@@ -40,18 +41,7 @@ export default {
     data: function () {
         return {
             version: "v1",
-            versions: [
-                {
-                    label: "v1 简易开发版",
-                    key: "v1",
-                    status: true,
-                },
-                {
-                    label: "v2 开发中..",
-                    key: "v2",
-                    status: false,
-                },
-            ],
+            versions: pkg.versions,
             BottomRight,
         };
     },

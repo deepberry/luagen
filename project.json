@@ -3,5 +3,17 @@
     "keys": "lua,excel,xls",
     "desc": "lua脚本生成器",
 
-    "defaultVersion": "v1"
+    "defaultVersion": "v1",
+    "versions": [
+        {
+            "label": "v1 简易开发版",
+            "key": "v1",
+            "status": true
+        },
+        {
+            "label": "v2 开发中..",
+            "key": "v2",
+            "status": false
+        }
+    ]
 }
