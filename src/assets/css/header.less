@@ -21,6 +21,7 @@
     }
     .u-title {
         color: @black;
+        font-family: "Consolas";
     }
 }
 
@@ -36,15 +37,21 @@
     a {
         margin-left: 20px;
         letter-spacing: 0.5px;
-        &::before {
-            content: "[";
-        }
-        &::after {
-            content: "]";
-        }
-        &:hover {
-            color: @primary;
+        // &::before {
+        //     content: "[";
+        // }
+        // &::after {
+        //     content: "]";
+        // }
+        color: @primary;
+        &:hover span {
             box-shadow: 0 1px 0 @primary;
         }
+        display: flex;
+        align-items: center;
+    }
+    img {
+        .size(22px);
+        .mr(5px);
     }
 }
