@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-30 16:59:28
- * @LastEditTime: 2022-06-30 17:58:37
+ * @LastEditTime: 2022-07-01 18:33:14
  * @Description:文件信息
 -->
 <template>
@@ -26,18 +26,21 @@ import { RefreshLeft } from "@element-plus/icons-vue";
 export default {
     name: "FileInfo",
     emits: ["reset"],
-    props: ["file"],
     components: {},
     data: function () {
         return {
             RefreshLeft: markRaw(RefreshLeft),
         };
     },
-    computed: {},
+    computed: {
+        file: function () {
+            return this.$store.state.file;
+        },
+    },
     watch: {},
     methods: {
         reset: function () {
-            this.$emit("reset");
+            this.$store.commit("empty");
         },
     },
     created: function () {},

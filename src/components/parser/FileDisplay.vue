@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-30 16:59:28
- * @LastEditTime: 2022-07-01 16:52:34
+ * @LastEditTime: 2022-07-01 18:31:39
  * @Description:表格展示（仅读）
 -->
 <template>
@@ -14,14 +14,16 @@
 const XLSX = require("xlsx");
 export default {
     name: "FileDisplay",
-    props: ["raw"],
-    components: {},
     data: function () {
         return {
             html: "",
         };
     },
-    computed: {},
+    computed: {
+        raw: function () {
+            return this.$store.state.raw;
+        },
+    },
     watch: {
         raw: {
             immediate: true,

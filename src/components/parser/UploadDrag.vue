@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-30 16:59:28
- * @LastEditTime: 2022-07-01 16:51:12
+ * @LastEditTime: 2022-07-01 18:36:22
  * @Description:拖拽上传组件
 -->
 <template>
@@ -43,7 +43,16 @@ export default {
     watch: {},
     methods: {
         handleChange: function (file) {
-            this.$emit("upload", file);
+            this.$store.commit("bulk", [
+                {
+                    key: "file",
+                    val: file,
+                },
+                {
+                    key: "raw",
+                    val: file.raw,
+                },
+            ]);
         },
     },
     created: function () {},

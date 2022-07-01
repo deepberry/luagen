@@ -1,7 +1,7 @@
 /*
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-01 16:46:29
+ * @LastEditTime: 2022-07-01 18:38:18
  * @Description:
  */
 
@@ -15,13 +15,29 @@ const store = {
     state: {
         version: pkg.defaultVersion || "v1",
 
+        // input
+        file: "",
+        raw: "",
+
+        // params
         inputHeader: [],
         keymap: {},
         order: [],
+
+        // output
     },
     mutations: {
         set: (state, payload) => {
             state[payload.key] = payload.val;
+        },
+        bulk: (state, payload) => {
+            for (let item of payload) {
+                state[item.key] = item.val;
+            }
+        },
+        empty: (state) => {
+            state.file = "";
+            state.raw = "";
         },
     },
     getters: {

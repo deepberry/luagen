@@ -1,18 +1,18 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-01 18:26:00
+ * @LastEditTime: 2022-07-01 18:33:34
  * @Description:v1版本
 -->
 <template>
     <div class="p-v1">
         <div class="m-left">
             <template v-if="file">
-                <FileMeta :file="file" @reset="reset" />
-                <FileDisplay :raw="raw" />
+                <FileMeta />
+                <FileDisplay />
             </template>
             <template v-else>
-                <UploadDrag @upload="uploadFile" />
+                <UploadDrag />
             </template>
         </div>
         <div class="m-right">
@@ -22,7 +22,7 @@
                 <el-tab-pane label="lua">
                     <LuaCode />
                 </el-tab-pane>
-                <el-tab-pane label="注释与映射">
+                <el-tab-pane label="comment">
                     <CodeComment />
                 </el-tab-pane>
                 <el-tab-pane label="json">
@@ -54,26 +54,11 @@ export default {
         DataTree,
         LuaCode,
     },
-    props: [],
-    data: function () {
-        return {
-            file: "",
-        };
-    },
     computed: {
-        raw: function () {
-            return this.file?.raw;
+        file() {
+            return this.$store.state.file;
         },
     },
-    methods: {
-        uploadFile: function (file) {
-            this.file = file;
-        },
-        reset: function () {
-            this.file = "";
-        },
-    },
-    created: function () {},
 };
 </script>
 
