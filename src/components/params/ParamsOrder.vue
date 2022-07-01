@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-07-01 15:01:26
- * @LastEditTime: 2022-07-01 18:03:57
+ * @LastEditTime: 2022-07-01 18:14:05
  * @Description: 条件参数排序
 -->
 <template>
@@ -12,13 +12,14 @@
                 <em class="u-tip">（自定义排序以提升条件分支执行效率）</em>
             </span>
         </div>
-        <ul class="u-list">
+        <ul class="u-list" v-show="order.length">
             <draggable v-model="params" item-key="id">
                 <template #item="{ element }">
                     <el-button type="primary" plain class="u-item" size="small">{{ element.label }}</el-button>
                 </template>
             </draggable>
         </ul>
+        <div class="u-null" v-show="!order.length">...</div>
     </div>
 </template>
 
@@ -89,6 +90,11 @@ export default {
         margin-bottom: 5px;
         margin-right: 10px;
         margin-left: 0;
+    }
+    .u-null {
+        .x;
+        color: #999;
+        padding: 10px;
     }
 }
 </style>

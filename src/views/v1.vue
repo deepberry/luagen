@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-01 16:55:54
+ * @LastEditTime: 2022-07-01 18:26:00
  * @Description:v1版本
 -->
 <template>
@@ -16,8 +16,19 @@
             </template>
         </div>
         <div class="m-right">
-            <ParamsSetting :raw="raw" />
+            <ParamsSetting />
             <ParamsOrder />
+            <el-tabs type="border-card">
+                <el-tab-pane label="lua">
+                    <LuaCode />
+                </el-tab-pane>
+                <el-tab-pane label="注释与映射">
+                    <CodeComment />
+                </el-tab-pane>
+                <el-tab-pane label="json">
+                    <DataTree />
+                </el-tab-pane>
+            </el-tabs>
         </div>
     </div>
 </template>
@@ -28,6 +39,9 @@ import FileMeta from "../components/parser/FileMeta.vue";
 import FileDisplay from "@/components/parser/FileDisplay.vue";
 import ParamsSetting from "@/components/params/ParamsSetting.vue";
 import ParamsOrder from "@/components/params/ParamsOrder.vue";
+import CodeComment from "@/components/generator/CodeComment.vue";
+import DataTree from "@/components/generator/DataTree.vue";
+import LuaCode from "@/components/generator/LuaCode.vue";
 export default {
     name: "V1Home",
     components: {
@@ -36,6 +50,9 @@ export default {
         FileDisplay,
         ParamsSetting,
         ParamsOrder,
+        CodeComment,
+        DataTree,
+        LuaCode,
     },
     props: [],
     data: function () {
