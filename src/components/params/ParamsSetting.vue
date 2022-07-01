@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-07-01 15:01:26
- * @LastEditTime: 2022-07-01 17:11:45
+ * @LastEditTime: 2022-07-01 18:10:30
  * @Description: 参数设定
 -->
 <template>
@@ -16,9 +16,13 @@
             </span>
         </div>
         <ul class="u-list" v-show="collapsed">
-            <li class="u-item" v-for="item in params" :key="item.param">
+            <li class="u-item" v-for="item in params" :key="item.label">
                 <span class="u-label">{{ item.label }}</span>
-                <input class="u-input" type="text" v-model="item.param" />
+                <el-input class="u-input" v-model="item.param" size="small">
+                    <template #prepend v-if="item.type == 'handler' || item.type == 'return'">{{
+                        item.type == "handler" ? "$" : "_"
+                    }}</template>
+                </el-input>
                 <el-radio-group v-model="item.type" size="small">
                     <el-radio-button label="handler">句柄</el-radio-button>
                     <el-radio-button label="condition">条件</el-radio-button>
@@ -160,6 +164,10 @@ export default {
 
         & > * {
             flex: 1;
+        }
+
+        .el-input-group__prepend {
+            padding: 0 10px;
         }
     }
 }
