@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-30 16:59:28
- * @LastEditTime: 2022-06-30 17:58:46
+ * @LastEditTime: 2022-07-01 16:24:01
  * @Description:拖拽上传组件
 -->
 <template>
@@ -53,6 +53,6 @@ export default {
 
 <style lang="less">
 .m-upload__drag {
-    padding: 80px;
+    min-width: 520px;
 }
 </style>

@@ -13,6 +13,7 @@
         "@deepberry/common": "^0.1.2",
         "@deepberry/luagen-parser": "^0.1.1",
         "@vueuse/head": "^0.7.6",
+        "cheerio": "^1.0.0-rc.12",
         "core-js": "^3.8.3",
         "element-plus": "^2.2.5",
         "vue": "^3.2.13",

@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-06-30 17:05:56
+ * @LastEditTime: 2022-07-01 15:05:19
  * @Description:v1版本
 -->
 <template>
@@ -15,7 +15,10 @@
                 <UploadDrag @upload="uploadFile" />
             </template>
         </div>
-        <div class="m-right"></div>
+        <div class="m-right">
+            <ParamsSetting />
+            <ParamsOrder />
+        </div>
     </div>
 </template>
 
@@ -23,12 +26,16 @@
 import UploadDrag from "@/components/parser/UploadDrag.vue";
 import FileMeta from "../components/parser/FileMeta.vue";
 import FileDisplay from "@/components/parser/FileDisplay.vue";
+import ParamsSetting from "@/components/params/ParamsSetting.vue";
+import ParamsOrder from "@/components/params/ParamsOrder.vue";
 export default {
     name: "V1Home",
     components: {
         UploadDrag,
         FileMeta,
         FileDisplay,
+        ParamsSetting,
+        ParamsOrder,
     },
     props: [],
     data: function () {

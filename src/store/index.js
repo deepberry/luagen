@@ -1,7 +1,7 @@
 /*
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-06-27 20:02:53
+ * @LastEditTime: 2022-07-01 15:19:56
  * @Description:
  */
 
@@ -14,6 +14,10 @@ import { createStore } from "vuex";
 const store = {
     state: {
         version: pkg.defaultVersion || "v1",
+
+        inputHeader: [],
+        params: {},
+        order: [],
     },
     mutations: {
         set: (state, payload) => {

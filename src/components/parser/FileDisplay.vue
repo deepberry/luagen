@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-30 16:59:28
- * @LastEditTime: 2022-06-30 17:58:59
+ * @LastEditTime: 2022-07-01 15:33:07
  * @Description:表格展示（仅读）
 -->
 <template>
@@ -33,6 +33,7 @@ export default {
         },
     },
     methods: {
+        // 渲染html
         render: function (raw) {
             const fr = new FileReader();
             fr.readAsArrayBuffer(raw);
@@ -44,7 +45,28 @@ export default {
                 const ws = wb.Sheets[wb.SheetNames[0]];
                 const html = XLSX.utils.sheet_to_html(ws);
                 vm.html = html;
+                vm.extract(ws);
             };
+        },
+        // 提取表头
+        extract: function (sheet) {
+            var headers = [];
+            var range = XLSX.utils.decode_range(sheet["!ref"]);
+            var C,
+                R = range.s.r; /* start in the first row */
+            /* walk every column in the range */
+            for (C = range.s.c; C <= range.e.c; ++C) {
+                var cell = sheet[XLSX.utils.encode_cell({ c: C, r: R })]; /* find the cell in the first row */
+
+                var hdr = "UNKNOWN " + C; // <-- replace with your desired default
+                if (cell && cell.t) hdr = XLSX.utils.format_cell(cell);
+
+                headers.push(hdr);
+            }
+            this.$store.commit("set", {
+                key: "inputHeader",
+                val: headers,
+            });
         },
     },
     created: function () {},
