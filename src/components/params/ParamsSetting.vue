@@ -1,12 +1,12 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-07-01 15:01:26
- * @LastEditTime: 2022-07-01 16:19:07
+ * @LastEditTime: 2022-07-01 17:11:45
  * @Description: 参数设定
 -->
 <template>
     <div class="m-params-setting">
-        <div class="u-title">
+        <div class="u-title m-subtitle">
             <span class="u-title-label"
                 ><el-icon class="u-title-icon"><SetUp /></el-icon>参数设定</span
             >
@@ -34,20 +34,23 @@ import { markRaw } from "vue";
 import { SetUp, ArrowDown, ArrowUp } from "@element-plus/icons-vue";
 export default {
     name: "ParamsSetting",
-    props: [],
     components: {
         SetUp: markRaw(SetUp),
         ArrowDown: markRaw(ArrowDown),
         ArrowUp: markRaw(ArrowUp),
     },
     watch: {
+        // 监听导入数据变化，根据表头以更新参数列表
         "$store.state.inputHeader": function (list) {
-            this.params = list.map((item) => {
-                return {
-                    label: item,
-                    param: "",
-                    type: "condition",
-                };
+            this.params = list.map((item, i) => {
+                return this.buildParam(item, i);
+            });
+        },
+        // 提交keymap至store以供转换器使用
+        keymap: function (val) {
+            this.$store.commit("set", {
+                key: "keymap",
+                val,
             });
         },
     },
@@ -86,39 +89,43 @@ export default {
             });
             return keymap;
         },
+        // 表头长度
+        headerLength: function () {
+            return this.$store.state.inputHeader.length;
+        },
     },
-
     methods: {
+        // 折叠面板
         toggleParams: function () {
             this.collapsed = !this.collapsed;
         },
+        // 自动命名
+        buildParam: function (label, i) {
+            const startASCII = 96; //97a~122z
+            let item = {
+                label,
+                param: "",
+                type: "",
+            };
+            if (i == 0) {
+                item.param = "h";
+                item.type = "handler";
+            } else if (i == this.headerLength - 1) {
+                item.param = "r";
+                item.type = "return";
+            } else {
+                item.param = String.fromCharCode(startASCII + i);
+                item.type = "condition";
+            }
+            return item;
+        },
     },
-    created: function () {},
-    mounted: function () {},
 };
 </script>
 
 <style lang="less">
 .m-params-setting {
     .u-title {
-        padding: 5px 10px;
-        background-color: #fafbfc;
-        border: 1px solid #eee;
-        .r(4px);
-        .fz(14px,24px);
-
-        display: flex;
-        justify-content: space-between;
-
-        .u-title-label {
-            display: flex;
-            align-items: center;
-        }
-
-        .u-title-icon {
-            .mr(5px);
-        }
-
         .u-title-folder {
             .pointer;
         }
@@ -126,7 +133,6 @@ export default {
     .u-list {
         list-style: none;
         padding: 10px 0;
-        margin: 0;
         // display:flex;
         // flex-wrap: wrap;
         display: grid;

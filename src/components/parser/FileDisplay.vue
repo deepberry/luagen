@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-30 16:59:28
- * @LastEditTime: 2022-07-01 15:33:07
+ * @LastEditTime: 2022-07-01 16:52:34
  * @Description:表格展示（仅读）
 -->
 <template>
@@ -77,7 +77,7 @@ export default {
 <style lang="less">
 .m-file-display {
     .u-table {
-        max-height: calc(100vh - 200px);
+        max-height: calc(100vh - 180px);
         overflow-y: scroll;
         &::-webkit-scrollbar {
             width: 4px;

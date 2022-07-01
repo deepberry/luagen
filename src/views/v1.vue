@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-01 15:05:19
+ * @LastEditTime: 2022-07-01 16:55:54
  * @Description:v1版本
 -->
 <template>
@@ -16,7 +16,7 @@
             </template>
         </div>
         <div class="m-right">
-            <ParamsSetting />
+            <ParamsSetting :raw="raw" />
             <ParamsOrder />
         </div>
     </div>

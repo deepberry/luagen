@@ -1,7 +1,7 @@
 /*
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-01 15:19:56
+ * @LastEditTime: 2022-07-01 16:46:29
  * @Description:
  */
 
@@ -16,7 +16,7 @@ const store = {
         version: pkg.defaultVersion || "v1",
 
         inputHeader: [],
-        params: {},
+        keymap: {},
         order: [],
     },
     mutations: {
