@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-04 16:52:12
+ * @LastEditTime: 2022-07-04 17:35:32
  * @Description:v1版本
 -->
 <template>
@@ -19,14 +19,14 @@
             <ParamsSetting />
             <ParamsOrder />
             <div class="m-output" v-loading="loading">
-                <el-tabs type="border-card">
-                    <el-tab-pane label="lua" lazy>
+                <el-tabs type="border-card" v-model="tab">
+                    <el-tab-pane label="lua" name="lua">
                         <LuaCode @build="build" />
                     </el-tab-pane>
-                    <el-tab-pane label="comment" lazy>
+                    <el-tab-pane label="comment" name="comment" lazy>
                         <CodeComment />
                     </el-tab-pane>
-                    <el-tab-pane label="json" lazy>
+                    <el-tab-pane label="json" name="json" lazy>
                         <DataTree />
                     </el-tab-pane>
                 </el-tabs>
@@ -55,6 +55,9 @@ import LuaCode from "@/components/generator/LuaCode.vue";
 
 import parse from "@deepberry/luagen-parser/lib/parse.js";
 import { generate, Generator } from "@deepberry/luagen-generator/lib/index.js";
+
+import { mapState } from "vuex";
+import { markRaw } from "vue";
 export default {
     name: "V1Home",
     components: {
@@ -76,28 +79,20 @@ export default {
             loading: false,
 
             // 图标
-            DocumentCopy,
-            Position,
+            DocumentCopy: markRaw(DocumentCopy),
+            Position: markRaw(Position),
+
+            // tab
+            tab: "lua",
         };
     },
     computed: {
-        file() {
-            return this.$store.state.file;
-        },
-        raw: function () {
-            return this.$store.state.raw;
-        },
-        keymap: function () {
-            return this.$store.state.keymap;
-        },
-        order: function () {
-            return this.$store.state.order;
-        },
-        json: function () {
-            return this.$store.state.json;
-        },
+        ...mapState(["file", "raw", "keymap", "order", "json"]),
         buildText: function () {
             return this.hasBuildOnce ? "重新生成" : "生成代码";
+        },
+        data: function () {
+            return this.$store.state[this.tab];
         },
     },
     methods: {
