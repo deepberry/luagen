@@ -28,18 +28,17 @@
     .el-tabs {
         height: 100%;
         overflow: hidden;
+        box-sizing: border-box;
     }
     .el-tabs__content {
         overflow: scroll;
+        .scroll-bar();
         position: relative;
         box-sizing: border-box;
         height: calc(100% - 39px);
     }
     .m-code > pre {
         margin: 0;
-        word-break: break-all;
-        white-space: normal;
-
         code.hljs {
             padding: 0;
         }

@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-04 16:36:02
+ * @LastEditTime: 2022-07-04 16:52:12
  * @Description:v1版本
 -->
 <template>
@@ -18,7 +18,7 @@
         <div class="m-right">
             <ParamsSetting />
             <ParamsOrder />
-            <div class="m-output">
+            <div class="m-output" v-loading="loading">
                 <el-tabs type="border-card">
                     <el-tab-pane label="lua" lazy>
                         <LuaCode @build="build" />
@@ -72,6 +72,9 @@ export default {
             // 标记是否已生成过一次
             hasBuildOnce: false,
 
+            // 进度
+            loading: false,
+
             // 图标
             DocumentCopy,
             Position,
@@ -100,17 +103,26 @@ export default {
     methods: {
         // 生成代码
         build: function () {
-            this.parseToJson();
-            this.generateLua();
-            this.generateComment();
+            // 开始构建
+            this.loading = true;
 
+            // 构建步骤
+            this.parseToJson().then(() => {
+                this.generateLua();
+                this.generateComment();
+            });
+
+            // 结束构建
+            this.loading = false;
+
+            // 更新标记
             if (!this.hasBuildOnce) {
                 this.hasBuildOnce = true;
             }
         },
         // 生成json tree
         parseToJson: function () {
-            parse(this.raw, {
+            return parse(this.raw, {
                 keymap: this.keymap,
                 order: this.order,
             }).then((result) => {

@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-07-01 18:12:44
- * @LastEditTime: 2022-07-04 16:43:06
+ * @LastEditTime: 2022-07-04 16:54:54
  * @Description:lua代码
 -->
 <template>
@@ -38,6 +38,10 @@ export default {
 
 <style lang="less">
 .m-code-lua {
+    pre {
+        word-break: break-all;
+        white-space: normal;
+    }
     .u-null {
         padding: 80px;
         .x;

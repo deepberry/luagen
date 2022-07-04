@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-30 16:59:28
- * @LastEditTime: 2022-07-04 12:32:25
+ * @LastEditTime: 2022-07-04 16:58:24
  * @Description:表格展示（仅读）
 -->
 <template>
@@ -87,24 +87,7 @@ export default {
     border-right: 1px solid #eee;
     flex-shrink: 1;
     overflow-y: scroll;
-
-    &::-webkit-scrollbar {
-        width: 4px;
-    }
-    &::-webkit-scrollbar-track,
-    &::-webkit-scrollbar-track-piece {
-        background-color: #fafafa;
-        border-radius: 6px;
-    }
-    &::-webkit-scrollbar-thumb {
-        background-color: #eee;
-        border-radius: 6px;
-    }
-    &::-webkit-scrollbar-button,
-    &::-webkit-scrollbar-corner,
-    &::-webkit-resizer {
-        display: none;
-    }
+    .scroll-bar();
 }
 .m-file-display {
     .u-table {
