@@ -6,16 +6,14 @@
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
-        "update": "npm install @deepberry/common@latest",
+        "update": "npm install @deepberry/common@latest @deepberry/luagen-generator@latest @deepberry/luagen-parser@latest",
         "prepare": "husky install"
     },
     "dependencies": {
         "@deepberry/common": "^0.1.2",
         "@deepberry/luagen-generator": "^0.1.0",
-        "@deepberry/luagen-parser": "^0.1.1",
+        "@deepberry/luagen-parser": "^0.1.2",
         "@highlightjs/vue-plugin": "^2.1.0",
-        "@vueuse/head": "^0.7.6",
-        "cheerio": "^1.0.0-rc.12",
         "core-js": "^3.8.3",
         "element-plus": "^2.2.5",
         "highlight.js": "^11.5.1",

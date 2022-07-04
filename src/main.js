@@ -1,7 +1,7 @@
 /*
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-04 11:47:32
+ * @LastEditTime: 2022-07-04 18:05:06
  * @Description:
  *
  */
@@ -24,6 +24,12 @@ app.use(store);
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 app.use(ElementPlus);
+
+// error
+app.config.errorHandler = (err, vm, info) => {
+    console.log(111);
+    console.log(err, vm, info);
+};
 
 // highlight
 import "highlight.js/styles/github.css";

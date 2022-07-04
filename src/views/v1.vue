@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-04 17:48:56
+ * @LastEditTime: 2022-07-04 18:11:00
  * @Description:v1版本
 -->
 <template>
@@ -104,10 +104,17 @@ export default {
             this.loading = true;
 
             // 构建步骤
-            this.parseToJson().then(() => {
-                this.generateLua();
-                this.generateComment();
-            });
+            this.parseToJson()
+                .then(() => {
+                    this.generateLua();
+                    this.generateComment();
+                })
+                .catch((err) => {
+                    this.$notify({
+                        message: `${err.message}`,
+                        type: "warning",
+                    });
+                });
 
             // 结束构建
             this.loading = false;
