@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-30 16:59:28
- * @LastEditTime: 2022-07-01 18:31:39
+ * @LastEditTime: 2022-07-04 11:24:08
  * @Description:表格展示（仅读）
 -->
 <template>
@@ -20,29 +20,35 @@ export default {
         };
     },
     computed: {
-        raw: function () {
-            return this.$store.state.raw;
+        file: function () {
+            return this.$store.state.file;
         },
     },
     watch: {
-        raw: {
+        file: {
             immediate: true,
-            handler: function (raw) {
-                if (raw) {
-                    this.render(raw);
+            handler: function (file) {
+                if (file) {
+                    this.render(file);
                 }
             },
         },
     },
     methods: {
         // 渲染html
-        render: function (raw) {
+        render: function (file) {
+            // 读取文件对象
             const fr = new FileReader();
-            fr.readAsArrayBuffer(raw);
+            fr.readAsArrayBuffer(file);
 
             const vm = this;
             fr.onload = function (e) {
+                // 提交原始数据
                 const data = e.target.result;
+                vm.$store.commit("set", { key: "raw", val: data });
+                console.log(data);
+
+                // 渲染Html
                 const wb = XLSX.read(data, { type: "binary" });
                 const ws = wb.Sheets[wb.SheetNames[0]];
                 const html = XLSX.utils.sheet_to_html(ws);

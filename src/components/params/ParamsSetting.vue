@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-07-01 15:01:26
- * @LastEditTime: 2022-07-01 18:10:30
+ * @LastEditTime: 2022-07-04 11:26:31
  * @Description: 参数设定
 -->
 <template>
@@ -136,7 +136,8 @@ export default {
     }
     .u-list {
         list-style: none;
-        padding: 10px 0;
+        .mt(10px);
+        // padding: 10px 0;
         // display:flex;
         // flex-wrap: wrap;
         display: grid;

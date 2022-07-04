@@ -1,3 +1,9 @@
+/*
+ * @Author: iRuxu
+ * @Date: 2022-06-27 15:29:53
+ * @LastEditTime: 2022-07-04 10:43:30
+ * @Description:
+ */
 const path = require("path");
 const pkg = require("./package.json");
 const project = require("./project.json");
@@ -53,11 +59,11 @@ module.exports = {
         });
 
         //💝 in-line small imgs ~
-        config.module
-            .rule("images")
-            .use("url-loader")
-            .loader("url-loader")
-            .tap((options) => Object.assign(options || {}, { limit: 10240 }));
+        config.module.rule("images").set("parser", {
+            dataUrlCondition: {
+                maxSize: 4 * 1024, // 4KiB
+            },
+        });
 
         //💝 in-line svg imgs ~
         config.module.rule("vue").use("vue-svg-inline-loader").loader("vue-svg-inline-loader");

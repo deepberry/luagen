@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-30 16:59:28
- * @LastEditTime: 2022-07-01 18:36:22
+ * @LastEditTime: 2022-07-04 11:23:46
  * @Description:拖拽上传组件
 -->
 <template>
@@ -33,7 +33,6 @@ export default {
     components: {
         UploadFilled,
     },
-    emits: ["upload"],
     data: function () {
         return {
             fileList: [],
@@ -43,16 +42,10 @@ export default {
     watch: {},
     methods: {
         handleChange: function (file) {
-            this.$store.commit("bulk", [
-                {
-                    key: "file",
-                    val: file,
-                },
-                {
-                    key: "raw",
-                    val: file.raw,
-                },
-            ]);
+            this.$store.commit("set", {
+                key: "file",
+                val: file.raw, //原始文件对象
+            });
         },
     },
     created: function () {},

@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-07-01 15:01:26
- * @LastEditTime: 2022-07-01 18:14:05
+ * @LastEditTime: 2022-07-04 11:25:59
  * @Description: 条件参数排序
 -->
 <template>
@@ -79,6 +79,9 @@ export default {
 
 <style lang="less">
 .m-params-order {
+    .u-title {
+        .mt(10px);
+    }
     .u-title-icon {
         transform: rotate(90deg);
     }
