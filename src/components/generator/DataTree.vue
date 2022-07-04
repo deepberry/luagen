@@ -1,11 +1,13 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-07-01 18:12:44
- * @LastEditTime: 2022-07-04 11:38:21
+ * @LastEditTime: 2022-07-04 12:36:10
  * @Description:json tree
 -->
 <template>
-    <div class="m-data-tree">{{ json }}</div>
+    <div class="m-data-tree">
+        <highlightjs language="json" :code="json" />
+    </div>
 </template>
 
 <script>
@@ -28,8 +30,8 @@ export default {
         },
     },
     watch: {
-        raw: function (raw) {
-            raw && this.parseToJson(raw);
+        keymap: function () {
+            this.parseToJson(this.raw);
         },
     },
     methods: {
@@ -41,7 +43,16 @@ export default {
             });
         },
     },
-    created: function () {},
-    mounted: function () {},
+    mounted: function () {
+        this.parseToJson(this.raw);
+    },
 };
 </script>
+
+<style lang="less">
+.m-data-tree {
+    & > pre {
+        margin: 0;
+    }
+}
+</style>

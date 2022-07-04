@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-01 18:33:34
+ * @LastEditTime: 2022-07-04 12:37:13
  * @Description:v1版本
 -->
 <template>
@@ -18,14 +18,14 @@
         <div class="m-right">
             <ParamsSetting />
             <ParamsOrder />
-            <el-tabs type="border-card">
-                <el-tab-pane label="lua">
+            <el-tabs class="m-output" type="border-card">
+                <el-tab-pane label="lua" lazy>
                     <LuaCode />
                 </el-tab-pane>
-                <el-tab-pane label="comment">
+                <el-tab-pane label="comment" lazy>
                     <CodeComment />
                 </el-tab-pane>
-                <el-tab-pane label="json">
+                <el-tab-pane label="json" lazy>
                     <DataTree />
                 </el-tab-pane>
             </el-tabs>

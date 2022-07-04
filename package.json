@@ -12,10 +12,12 @@
     "dependencies": {
         "@deepberry/common": "^0.1.2",
         "@deepberry/luagen-parser": "^0.1.1",
+        "@highlightjs/vue-plugin": "^2.1.0",
         "@vueuse/head": "^0.7.6",
         "cheerio": "^1.0.0-rc.12",
         "core-js": "^3.8.3",
         "element-plus": "^2.2.5",
+        "highlight.js": "^11.5.1",
         "lodash": "^4.17.21",
         "vue": "^3.2.13",
         "vue-router": "^4.0.16",

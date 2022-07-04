@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-30 16:59:28
- * @LastEditTime: 2022-07-04 11:24:08
+ * @LastEditTime: 2022-07-04 12:32:25
  * @Description:表格展示（仅读）
 -->
 <template>
@@ -46,7 +46,6 @@ export default {
                 // 提交原始数据
                 const data = e.target.result;
                 vm.$store.commit("set", { key: "raw", val: data });
-                console.log(data);
 
                 // 渲染Html
                 const wb = XLSX.read(data, { type: "binary" });
@@ -84,27 +83,31 @@ export default {
 
 <style lang="less">
 .m-file-display {
-    .u-table {
-        max-height: calc(100vh - 180px);
-        overflow-y: scroll;
-        &::-webkit-scrollbar {
-            width: 4px;
-        }
-        &::-webkit-scrollbar-track,
-        &::-webkit-scrollbar-track-piece {
-            background-color: #fafafa;
-            border-radius: 6px;
-        }
-        &::-webkit-scrollbar-thumb {
-            background-color: #eee;
-            border-radius: 6px;
-        }
-        &::-webkit-scrollbar-button,
-        &::-webkit-scrollbar-corner,
-        &::-webkit-resizer {
-            display: none;
-        }
+    border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee;
+    flex-shrink: 1;
+    overflow-y: scroll;
 
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-track-piece {
+        background-color: #fafafa;
+        border-radius: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #eee;
+        border-radius: 6px;
+    }
+    &::-webkit-scrollbar-button,
+    &::-webkit-scrollbar-corner,
+    &::-webkit-resizer {
+        display: none;
+    }
+}
+.m-file-display {
+    .u-table {
         table {
             width: 100%;
             border-collapse: collapse;

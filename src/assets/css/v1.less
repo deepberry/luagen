@@ -8,16 +8,28 @@
     flex: 1;
     padding: 20px;
     // align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
 }
 .m-right {
     flex: 1;
     border-left: 1px dashed #eee;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
 }
-// .m-file-info {
-// border-bottom: none;
-// }
-.m-file-display {
-    border-bottom: 1px solid #eee;
-    border-right: 1px solid #eee;
+
+.m-output {
+    flex-shrink: 1;
+    overflow: hidden;
+    .el-tabs__content {
+        overflow: scroll;
+        position: relative;
+        box-sizing: border-box;
+        height: calc(100% - 39px);
+    }
 }

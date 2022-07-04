@@ -1,22 +1,35 @@
+/*
+ * @Author: iRuxu
+ * @Date: 2022-06-27 15:29:53
+ * @LastEditTime: 2022-07-04 11:47:32
+ * @Description:
+ *
+ */
 // 1.Create APP
-import { createApp } from 'vue'
-import App from './App.vue'
-const app = createApp(App)
+import { createApp } from "vue";
+import App from "./App.vue";
+const app = createApp(App);
 
 // 2.Components
-import { createHead } from '@vueuse/head'
-const head = createHead()
-app.use(head)
 
-import router from './router/index';
-app.use(router)
+// router
+import router from "./router/index";
+app.use(router);
 
-import store from './store/index';
-app.use(store)
+// store
+import store from "./store/index";
+app.use(store);
 
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
-app.use(ElementPlus)
+// ui
+import ElementPlus from "element-plus";
+import "element-plus/dist/index.css";
+app.use(ElementPlus);
+
+// highlight
+import "highlight.js/styles/github.css";
+import "highlight.js/lib/common";
+import hljsVuePlugin from "@highlightjs/vue-plugin";
+app.use(hljsVuePlugin);
 
 // 3.Mount DOM
-app.mount('#app')
+app.mount("#app");
