@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-04 17:35:32
+ * @LastEditTime: 2022-07-04 17:48:56
  * @Description:v1版本
 -->
 <template>
@@ -31,7 +31,9 @@
                     </el-tab-pane>
                 </el-tabs>
                 <div class="m-build">
-                    <el-button type="primary" size="small" :disabled="!file" :icon="DocumentCopy">一键复制</el-button>
+                    <el-button type="primary" size="small" :disabled="!file" :icon="DocumentCopy" @click="copy"
+                        >一键复制</el-button
+                    >
                     <el-button type="primary" size="small" @click="build" :disabled="!file" :icon="Position">{{
                         buildText
                     }}</el-button>
@@ -143,6 +145,15 @@ export default {
             this.$store.commit("set", {
                 key: "comment",
                 val: comment,
+            });
+        },
+        // 复制
+        copy: function () {
+            navigator.clipboard.writeText(this.data).then(() => {
+                this.$message({
+                    message: `${this.tab}复制成功`,
+                    type: "success",
+                });
             });
         },
     },
