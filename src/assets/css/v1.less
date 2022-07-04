@@ -5,16 +5,15 @@
     overflow: auto;
 }
 .m-left {
-    flex: 1;
+    flex: 50% 0 0;
     padding: 20px;
-    // align-items: center;
     display: flex;
     flex-direction: column;
     height: 100%;
     box-sizing: border-box;
 }
 .m-right {
-    flex: 1;
+    flex: 50% 0 0;
     border-left: 1px dashed #eee;
     padding: 20px;
     display: flex;
@@ -26,10 +25,28 @@
 .m-output {
     flex-shrink: 1;
     overflow: hidden;
+    .el-tabs {
+        height: 100%;
+        overflow: hidden;
+    }
     .el-tabs__content {
         overflow: scroll;
         position: relative;
         box-sizing: border-box;
         height: calc(100% - 39px);
+    }
+    .m-code > pre {
+        margin: 0;
+        word-break: break-all;
+        white-space: normal;
+
+        code.hljs {
+            padding: 0;
+        }
+    }
+    .pr;
+    .m-build {
+        .pa;
+        .rt(8px);
     }
 }

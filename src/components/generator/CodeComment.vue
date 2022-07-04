@@ -1,25 +1,22 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-07-01 18:12:44
- * @LastEditTime: 2022-07-01 18:16:48
+ * @LastEditTime: 2022-07-04 16:02:06
  * @Description:代码注释与索引表
 -->
 <template>
-    <div class="m-code-comment"></div>
+    <div class="m-code-comment m-code">
+        <highlightjs language="lua" :code="comment" />
+    </div>
 </template>
 
 <script>
 export default {
     name: "CodeComment",
-    props: [],
-    components: {},
-    data: function () {
-        return {};
+    computed: {
+        comment: function () {
+            return this.$store.state.comment;
+        },
     },
-    computed: {},
-    watch: {},
-    methods: {},
-    created: function () {},
-    mounted: function () {},
 };
 </script>

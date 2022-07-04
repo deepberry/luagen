@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-30 16:59:28
- * @LastEditTime: 2022-07-04 11:23:46
+ * @LastEditTime: 2022-07-04 15:32:28
  * @Description:拖拽上传组件
 -->
 <template>
@@ -29,7 +29,6 @@
 import { UploadFilled } from "@element-plus/icons-vue";
 export default {
     name: "UploadDrag",
-    props: [],
     components: {
         UploadFilled,
     },
@@ -38,8 +37,6 @@ export default {
             fileList: [],
         };
     },
-    computed: {},
-    watch: {},
     methods: {
         handleChange: function (file) {
             this.$store.commit("set", {
@@ -48,8 +45,6 @@ export default {
             });
         },
     },
-    created: function () {},
-    mounted: function () {},
 };
 </script>
 

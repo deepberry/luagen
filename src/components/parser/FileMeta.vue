@@ -25,8 +25,6 @@ import { markRaw } from "vue";
 import { RefreshLeft } from "@element-plus/icons-vue";
 export default {
     name: "FileInfo",
-    emits: ["reset"],
-    components: {},
     data: function () {
         return {
             RefreshLeft: markRaw(RefreshLeft),
@@ -37,14 +35,11 @@ export default {
             return this.$store.state.file;
         },
     },
-    watch: {},
     methods: {
         reset: function () {
             this.$store.commit("empty");
         },
     },
-    created: function () {},
-    mounted: function () {},
 };
 </script>
 

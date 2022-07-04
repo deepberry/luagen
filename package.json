@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "@deepberry/common": "^0.1.2",
+        "@deepberry/luagen-generator": "^0.1.0",
         "@deepberry/luagen-parser": "^0.1.1",
         "@highlightjs/vue-plugin": "^2.1.0",
         "@vueuse/head": "^0.7.6",

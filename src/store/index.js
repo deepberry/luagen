@@ -1,7 +1,7 @@
 /*
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-01 18:38:18
+ * @LastEditTime: 2022-07-04 16:00:50
  * @Description:
  */
 
@@ -25,6 +25,9 @@ const store = {
         order: [],
 
         // output
+        lua: "",
+        json: "",
+        comment: "",
     },
     mutations: {
         set: (state, payload) => {

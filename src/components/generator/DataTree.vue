@@ -1,58 +1,22 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-07-01 18:12:44
- * @LastEditTime: 2022-07-04 12:36:10
- * @Description:json tree
+ * @LastEditTime: 2022-07-04 16:02:16
+ * @Description:解析器生成的json源码
 -->
 <template>
-    <div class="m-data-tree">
+    <div class="m-code-json m-code">
         <highlightjs language="json" :code="json" />
     </div>
 </template>
 
 <script>
-import parse from "@deepberry/luagen-parser/lib/parse.js";
 export default {
     name: "DataTree",
-    props: [],
-    components: {},
-    data: function () {
-        return {
-            json: "",
-        };
-    },
     computed: {
-        raw: function () {
-            return this.$store.state.raw;
+        json: function () {
+            return this.$store.state.json;
         },
-        keymap: function () {
-            return this.$store.state.keymap;
-        },
-    },
-    watch: {
-        keymap: function () {
-            this.parseToJson(this.raw);
-        },
-    },
-    methods: {
-        parseToJson: function () {
-            parse(this.raw, {
-                keymap: this.keymap,
-            }).then((result) => {
-                this.json = result.toJSON();
-            });
-        },
-    },
-    mounted: function () {
-        this.parseToJson(this.raw);
     },
 };
 </script>
-
-<style lang="less">
-.m-data-tree {
-    & > pre {
-        margin: 0;
-    }
-}
-</style>

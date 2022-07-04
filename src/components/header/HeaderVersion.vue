@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 17:52:09
- * @LastEditTime: 2022-06-30 12:16:26
+ * @LastEditTime: 2022-07-04 15:31:20
  * @Description:切换版本
 -->
 <template>
@@ -35,7 +35,6 @@ import { markRaw } from "vue";
 import pkg from "@/../project.json";
 export default {
     name: "HeaderVersion",
-    props: [],
     components: {
         ArrowDown,
     },
@@ -46,7 +45,6 @@ export default {
             BottomRight: markRaw(BottomRight),
         };
     },
-    computed: {},
     watch: {
         "$store.state.version": {
             immediate: true,
@@ -63,7 +61,5 @@ export default {
             this.$store.commit("set", { key: "version", val: v });
         },
     },
-    created: function () {},
-    mounted: function () {},
 };
 </script>

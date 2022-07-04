@@ -1,25 +1,58 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-07-01 18:12:44
- * @LastEditTime: 2022-07-01 18:16:48
+ * @LastEditTime: 2022-07-04 16:43:06
  * @Description:lua代码
 -->
 <template>
-    <div class="m-lua-code"></div>
+    <div class="m-code-lua m-code">
+        <highlightjs language="lua" :code="lua" v-if="lua" />
+        <div class="u-null" v-else>
+            <el-button class="u-btn" type="success" @click="build" :disabled="!file">
+                <span class="u-btn-title">♬ 生成代码</span>
+                <span class="u-btn-desc">Build Code</span>
+            </el-button>
+        </div>
+    </div>
 </template>
 
 <script>
 export default {
     name: "LuaCode",
-    props: [],
-    components: {},
-    data: function () {
-        return {};
+    emits: ["build"],
+    computed: {
+        lua: function () {
+            return this.$store.state.lua;
+        },
+        file() {
+            return this.$store.state.file;
+        },
     },
-    computed: {},
-    watch: {},
-    methods: {},
-    created: function () {},
-    mounted: function () {},
+    methods: {
+        build: function () {
+            this.$emit("build");
+        },
+    },
 };
 </script>
+
+<style lang="less">
+.m-code-lua {
+    .u-null {
+        padding: 80px;
+        .x;
+    }
+    .u-btn {
+        .size(140px,50px);
+        span {
+            .db !important;
+        }
+        .u-btn-desc {
+            .fz(12px);
+        }
+        .u-btn-title {
+            .fz(12px,20px);
+        }
+    }
+}
+</style>
