@@ -1,7 +1,7 @@
 /*
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-04 18:05:06
+ * @LastEditTime: 2022-07-04 22:55:58
  * @Description:
  *
  */
@@ -27,15 +27,14 @@ app.use(ElementPlus);
 
 // error
 app.config.errorHandler = (err, vm, info) => {
-    console.log(111);
     console.log(err, vm, info);
 };
 
 // highlight
-import "highlight.js/styles/github.css";
-import "highlight.js/lib/common";
-import hljsVuePlugin from "@highlightjs/vue-plugin";
-app.use(hljsVuePlugin);
+// import "highlight.js/styles/github.css";
+// import "highlight.js/lib/common";
+// import hljsVuePlugin from "@highlightjs/vue-plugin";
+// app.use(hljsVuePlugin);
 
 // 3.Mount DOM
 app.mount("#app");

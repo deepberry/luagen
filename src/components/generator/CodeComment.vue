@@ -1,12 +1,12 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-07-01 18:12:44
- * @LastEditTime: 2022-07-04 16:02:06
+ * @LastEditTime: 2022-07-04 22:54:13
  * @Description:代码注释与索引表
 -->
 <template>
     <div class="m-code-comment m-code">
-        <highlightjs language="lua" :code="comment" />
+        <div class="u-comment">{{ comment }}</div>
     </div>
 </template>
 
@@ -20,3 +20,13 @@ export default {
     },
 };
 </script>
+
+<style lang="less">
+.m-code-comment {
+    .u-comment {
+        .fz(12px,1.6);
+        color: #666;
+        white-space: pre-line;
+    }
+}
+</style>
