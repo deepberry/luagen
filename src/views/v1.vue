@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-04 18:11:00
+ * @LastEditTime: 2022-07-07 13:23:33
  * @Description:v1版本
 -->
 <template>
@@ -139,12 +139,19 @@ export default {
         // 生成lua代码
         generateLua: function () {
             const result = generate(this.json);
-            const lua = Generator.outputCode(result, true);
+            const lua = Generator.minify(Generator.outputFunctions(result));
+            const table = Generator.outputScheduleMap(result);
 
-            this.$store.commit("set", {
-                key: "lua",
-                val: lua,
-            });
+            this.$store.commit("bulk", [
+                {
+                    key: "lua",
+                    val: lua,
+                },
+                {
+                    key: "table",
+                    val: table,
+                },
+            ]);
         },
         // 生成注释
         generateComment: function () {
