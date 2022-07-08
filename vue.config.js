@@ -1,7 +1,7 @@
 /*
  * @Author: iRuxu
  * @Date: 2022-07-04 10:42:02
- * @LastEditTime: 2022-07-08 19:02:00
+ * @LastEditTime: 2022-07-08 19:28:17
  * @Description:config
  */
 const path = require("path");
@@ -43,7 +43,7 @@ module.exports = {
         //BY root path or bind a domain
         (process.env.STATIC_PATH == "root" && "/") ||
         //BY cdn path
-        (process.env.STATIC_PATH === "cdn" && `${__cdn}${pkg.name}/`) ||
+        (process.env.STATIC_PATH === "cdn" && `${__cdn}static/${pkg.name}/`) ||
         //for lost
         "/",
 

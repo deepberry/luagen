@@ -39,4 +39,4 @@ jobs:
                   endpoint: "oss-cn-zhangjiakou.aliyuncs.com"
                   access-key-id: ${{secrets.OSS_ACCESSKEY_ID}}
                   access-key-secret: ${{secrets.OSS_ACCESS_KEY_SECRET}}
-            - run: ossutil cp -rf dist oss://deepberry/luagen
+            - run: ossutil cp -rf dist oss://deepberry/static/luagen
