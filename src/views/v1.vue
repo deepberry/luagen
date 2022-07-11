@@ -1,7 +1,7 @@
 <!--
  * @Author: iRuxu
  * @Date: 2022-06-27 15:29:53
- * @LastEditTime: 2022-07-07 13:23:33
+ * @LastEditTime: 2022-07-11 18:07:35
  * @Description:v1版本
 -->
 <template>
@@ -94,6 +94,9 @@ export default {
             return this.hasBuildOnce ? "重新生成" : "生成代码";
         },
         data: function () {
+            if (this.tab == "comment") {
+                return this.$store.state.comment + this.$store.state.table;
+            }
             return this.$store.state[this.tab];
         },
     },
