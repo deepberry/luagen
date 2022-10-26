@@ -31,6 +31,23 @@
                     </el-tab-pane>
                 </el-tabs>
                 <div class="m-build">
+                    <el-popover placement="top" :visible="codeVisible" width="280px">
+                        <Codesnippet :token="token" @close="close" />
+                        <template #reference>
+                            <span class="u-button">
+                                <el-button
+                                    type="success"
+                                    size="small"
+                                    v-if="token"
+                                    :disabled="hasCode"
+                                    :icon="DocumentCopy"
+                                    @click="codeVisible = true"
+                                    >保存为模版</el-button
+                                >
+                            </span>
+                        </template>
+                    </el-popover>
+
                     <el-button type="primary" size="small" :disabled="!file" :icon="DocumentCopy" @click="copy"
                         >一键复制</el-button
                     >
@@ -55,6 +72,8 @@ import CodeComment from "@/components/generator/CodeComment.vue";
 import DataTree from "@/components/generator/DataTree.vue";
 import LuaCode from "@/components/generator/LuaCode.vue";
 
+import Codesnippet from "@/components/from/Codesnippet";
+
 import parse from "@deepberry/luagen-parser/lib/parse.js";
 import { generate, Generator } from "@deepberry/luagen-generator/lib/index.js";
 
@@ -71,6 +90,7 @@ export default {
         CodeComment,
         DataTree,
         LuaCode,
+        Codesnippet,
     },
     data: function () {
         return {
@@ -86,6 +106,8 @@ export default {
 
             // tab
             tab: "lua",
+
+            codeVisible: false,
         };
     },
     computed: {
@@ -98,6 +120,12 @@ export default {
                 return this.$store.state.comment + this.$store.state.table;
             }
             return this.$store.state[this.tab];
+        },
+        token() {
+            return this.$route.params.token || localStorage.getItem("LUA_GEN_TOKEN");
+        },
+        hasCode() {
+            return this.$store.state.lua ? false : true;
         },
     },
     methods: {
@@ -144,7 +172,6 @@ export default {
             const result = generate(this.json);
             const lua = Generator.minify(Generator.outputFunctions(result));
             const table = Generator.outputScheduleMap(result);
-
             this.$store.commit("bulk", [
                 {
                     key: "lua",
@@ -172,6 +199,10 @@ export default {
                     type: "success",
                 });
             });
+        },
+        // 关闭
+        close() {
+            this.codeVisible = false;
         },
     },
 };
