@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkluagen"]=self["webpackChunkluagen"]||[]).push([[878],{878:function(e,n,r){r.r(n),r.d(n,{default:function(){return k}});var t=r(6252);function u(e,n,r,u,a,o){return(0,t.wg)(),(0,t.iD)("div")}var a={name:"homeIndex",beforeRouteEnter(e){return e.query.token&&localStorage.setItem("LUA_GEN_TOKEN",e.query.token),{name:"v1",params:{token:e.query.token}}}},o=r(3744);const c=(0,o.Z)(a,[["render",u]]);var k=c}}]);
-//# sourceMappingURL=878.abb57019.js.map
