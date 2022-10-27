@@ -17,7 +17,13 @@
         </el-form>
         <template #reference>
             <span class="u-button">
-                <el-button type="warning" size="small" v-if="token" @click="visible = true" :icon="FolderAdd"
+                <el-button
+                    type="warning"
+                    size="small"
+                    v-if="token"
+                    @click="visible = true"
+                    :icon="FolderAdd"
+                    :disabled="disabled"
                     >保存为模版</el-button
                 >
             </span>
@@ -31,6 +37,7 @@ import { FolderAdd } from "@element-plus/icons-vue";
 import { saveCodeSnippet, getCodeSnippetGroup } from "@/service/cms";
 export default {
     name: "CodeSnippet",
+    props: ["disabled"],
     data() {
         return {
             form: {

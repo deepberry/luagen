@@ -31,7 +31,7 @@
                     </el-tab-pane>
                 </el-tabs>
                 <div class="m-build">
-                    <CodeSnippet />
+                    <CodeSnippet :disabled="!file" />
 
                     <el-button type="primary" size="small" :disabled="!file" :icon="DocumentCopy" @click="copy"
                         >一键复制</el-button
