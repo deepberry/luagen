@@ -14,9 +14,7 @@ const routes = [
         name: "home",
         path: "/",
         redirect: (to) => {
-            const token = to.query.token;
-            if (token) localStorage.setItem("LUA_GEN_TOKEN", token);
-            return { name: "v1" };
+            return { path: "/v1", query: to.query };
         },
     },
     { name: "v1", path: "/v1", component: V1 },
@@ -28,6 +26,17 @@ const router = createRouter({
     // history: createWebHistory(),  //history api
     // base : '/rewrite root',
     routes,
+});
+
+// 5.Token hook
+const originQuery = new URLSearchParams(location.search);
+const globalToken = originQuery.get("__token");
+if (globalToken) localStorage.setItem("TITAN_TOKEN", globalToken);
+
+router.beforeEach((to, from, next) => {
+    const token = to.query.__token;
+    if (token) localStorage.setItem("TITAN_TOKEN", token);
+    next();
 });
 
 export default router;

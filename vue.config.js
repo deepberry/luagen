@@ -32,6 +32,7 @@ module.exports = {
                 target: process.env["DEV_SERVER"] == "true" ? "http://localhost:38000" : "https://cms.deepberry.cn",
             },
         },
+        port: 21009,
     },
 
     //❤️ define path for static files ~

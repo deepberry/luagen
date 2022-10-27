@@ -1,0 +1,104 @@
+<template>
+    <el-popover placement="top" :visible="visible" width="280px">
+        <header class="m-codesnippet-title">保存为模版</header>
+        <el-form class="m-codesnippet-form" ref="form" :model="form" :rules="rules">
+            <el-form-item label="模版名称" prop="title">
+                <el-input v-model="form.title" />
+            </el-form-item>
+            <el-form-item label="模版分组" prop="group">
+                <el-select v-model="form.group" placeholder="请选择分组" class="u-select">
+                    <el-option :label="item.name" v-for="(item, i) in groups" :key="i" :value="item.name" />
+                </el-select>
+            </el-form-item>
+            <div class="m-codesnippet-actions">
+                <el-button @click="visible = false"> 取消 </el-button>
+                <el-button type="primary" @click="save"> 确定 </el-button>
+            </div>
+        </el-form>
+        <template #reference>
+            <span class="u-button">
+                <el-button type="warning" size="small" v-if="token" @click="visible = true" :icon="FolderAdd"
+                    >保存为模版</el-button
+                >
+            </span>
+        </template>
+    </el-popover>
+</template>
+
+<script>
+import { markRaw } from "vue";
+import { FolderAdd } from "@element-plus/icons-vue";
+import { saveCodeSnippet, getCodeSnippetGroup } from "@/service/cms";
+export default {
+    name: "CodeSnippet",
+    data() {
+        return {
+            form: {
+                title: "",
+                group: "",
+                status: 1,
+                lang: "lua",
+                code: "",
+            },
+            rules: {
+                title: [{ required: true, message: "请输入模版名称", trigger: "blur" }],
+                group: [{ required: true, message: "请选择分组", trigger: "blur" }],
+            },
+            groups: [],
+            visible: false,
+            token: localStorage.getItem("TITAN_TOKEN"),
+            FolderAdd: markRaw(FolderAdd),
+        };
+    },
+    methods: {
+        load() {
+            getCodeSnippetGroup().then((res) => {
+                this.groups = res.data.data || [];
+            });
+        },
+        save() {
+            this.$refs.form.validate((valid) => {
+                if (valid) {
+                    this.form.code = this.$store.state.lua;
+                    saveCodeSnippet(this.form)
+                        .then(() => {
+                            this.$message({
+                                message: `保存为模版成功`,
+                                type: "success",
+                            });
+                            this.$refs.form.resetFields();
+                        })
+                        .finally(() => {
+                            this.close();
+                        });
+                }
+            });
+        },
+        close() {
+            this.visible = false;
+        },
+    },
+    mounted() {
+        if (this.token) this.load();
+    },
+};
+</script>
+<style lang="less">
+.m-codesnippet-title {
+    .fz(15px,2);
+    .bold;
+    .db;
+    .pb(15px);
+}
+.m-codesnippet-form {
+    .u-select {
+        .w(100%);
+        .db;
+    }
+}
+.m-codesnippet-actions {
+    .flex;
+    padding: 5px 0;
+    justify-content: center;
+}
+</style>
