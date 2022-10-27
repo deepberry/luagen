@@ -122,7 +122,7 @@ export default {
             return this.$store.state[this.tab];
         },
         token() {
-            return this.$route.params.token || localStorage.getItem("LUA_GEN_TOKEN");
+            return localStorage.getItem("LUA_GEN_TOKEN");
         },
         hasCode() {
             return this.$store.state.lua ? false : true;

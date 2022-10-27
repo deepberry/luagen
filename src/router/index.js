@@ -6,12 +6,19 @@ import {
 } from "vue-router";
 
 // 2.Components
-const Home = () => import("../views/Home.vue");
 const V1 = () => import("../views/v1.vue");
 
 // 3.Routes
 const routes = [
-    { name: "home", path: "/", component: Home },
+    {
+        name: "home",
+        path: "/",
+        redirect: (to) => {
+            const token = to.query.token;
+            if (token) localStorage.setItem("LUA_GEN_TOKEN", token);
+            return { name: "v1" };
+        },
+    },
     { name: "v1", path: "/v1", component: V1 },
 ];
 
