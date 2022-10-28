@@ -14,6 +14,8 @@ const routes = [
         name: "home",
         path: "/",
         redirect: (to) => {
+            const token = to.query.__token;
+            if (token) localStorage.setItem("TITAN_TOKEN", token);
             return { path: "/v1", query: to.query };
         },
     },
