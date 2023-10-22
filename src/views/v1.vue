@@ -21,6 +21,7 @@
             <div class="m-output" v-loading="loading">
                 <el-tabs type="border-card" v-model="tab">
                     <el-tab-pane label="lua" name="lua">
+                        <CodeComment />
                         <LuaCode @build="build" />
                     </el-tab-pane>
                     <el-tab-pane label="comment" name="comment" lazy>

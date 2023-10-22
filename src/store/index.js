@@ -42,6 +42,10 @@ const store = {
         empty: (state) => {
             state.file = "";
             state.raw = "";
+            state.lua = "";
+            state.json = "";
+            state.comment = "";
+            state.table = "";
         },
     },
     getters: {

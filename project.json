@@ -9,11 +9,6 @@
             "label": "v1 简易开发版",
             "key": "v1",
             "status": true
-        },
-        {
-            "label": "v2 开发中..",
-            "key": "v2",
-            "status": false
         }
     ]
 }
