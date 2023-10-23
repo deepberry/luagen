@@ -7,7 +7,8 @@
 <template>
     <div class="m-code-lua m-code">
         <div class="u-lua" v-if="lua">
-            {{ lua }}
+            <div class="u-lua-comment">{{ comment }}</div>
+            <div class="u-lua-code">{{ lua }}</div>
         </div>
         <div class="u-null" v-else>
             <el-button class="u-btn" type="success" @click="build" :disabled="!file">
@@ -25,6 +26,9 @@ export default {
     computed: {
         lua: function () {
             return this.$store.state.lua;
+        },
+        comment: function () {
+            return this.$store.state.comment;
         },
         file() {
             return this.$store.state.file;

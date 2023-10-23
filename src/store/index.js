@@ -29,6 +29,7 @@ const store = {
         json: "",
         comment: "",
         table: "",
+        _comment: "", //不包含table部分
     },
     mutations: {
         set: (state, payload) => {
@@ -46,6 +47,7 @@ const store = {
             state.json = "";
             state.comment = "";
             state.table = "";
+            state._comment = "";
         },
     },
     getters: {
