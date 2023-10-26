@@ -34,7 +34,7 @@
 <script>
 import { markRaw } from "vue";
 import { FolderAdd } from "@element-plus/icons-vue";
-import { saveCodeSnippet, getCodeSnippetGroup } from "@/service/cms";
+import { saveCodeSnippet, getCodeSnippetGroup } from "@/service/codesnippet";
 export default {
     name: "CodeSnippet",
     props: ["disabled"],
@@ -53,7 +53,7 @@ export default {
             },
             groups: [],
             visible: false,
-            token: localStorage.getItem("TITAN_TOKEN"),
+            token: localStorage.getItem("TOKEN_TITAN_V2"),
             FolderAdd: markRaw(FolderAdd),
         };
     },

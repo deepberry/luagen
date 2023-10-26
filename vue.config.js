@@ -28,8 +28,8 @@ module.exports = {
     //⚛️ Proxy ~
     devServer: {
         proxy: {
-            "/api/cms": {
-                target: process.env["DEV_SERVER"] == "true" ? "http://localhost:38000" : "https://cms.deepberry.cn",
+            "/api/titan": {
+                target: process.env["DEV_SERVER"] == "true" ? "http://localhost:38000" : "https://api.deepberry.cn",
             },
         },
         port: 21009,

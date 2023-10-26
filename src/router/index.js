@@ -29,6 +29,6 @@ const router = createRouter({
 // 5.Token Hook
 const originQuery = new URLSearchParams(location.search);
 const globalToken = originQuery.get("__token");
-if (globalToken) localStorage.setItem("TITAN_TOKEN", globalToken);
+if (globalToken) localStorage.setItem("TOKEN_TITAN_V2", globalToken);
 
 export default router;
