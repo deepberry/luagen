@@ -5,9 +5,9 @@
             <el-form-item label="模版名称" prop="title">
                 <el-input v-model="form.title" />
             </el-form-item>
-            <el-form-item label="模版分组" prop="group">
-                <el-select v-model="form.group" placeholder="请选择分组" class="u-select">
-                    <el-option :label="item.name" v-for="(item, i) in groups" :key="i" :value="item.name" />
+            <el-form-item label="模版分组" prop="group_id">
+                <el-select v-model="form.group_id" placeholder="请选择分组" class="u-select">
+                    <el-option :label="item.name" v-for="(item, i) in groups" :key="i" :value="item.id" />
                 </el-select>
             </el-form-item>
             <div class="m-codesnippet-actions">
@@ -42,14 +42,14 @@ export default {
         return {
             form: {
                 title: "",
-                group: "",
+                group_id: "",
                 status: 1,
                 lang: "lua",
                 code: "",
             },
             rules: {
                 title: [{ required: true, message: "请输入模版名称", trigger: "blur" }],
-                group: [{ required: true, message: "请选择分组", trigger: "blur" }],
+                group_id: [{ required: true, message: "请选择分组", trigger: "blur" }],
             },
             groups: [],
             visible: false,
@@ -67,6 +67,12 @@ export default {
             this.$refs.form.validate((valid) => {
                 if (valid) {
                     this.form.code = this.$store.state.lua;
+                    if (!this.form.code.trim()) {
+                        return this.$message({
+                            message: "请先生成代码",
+                            type: "warning",
+                        });
+                    }
                     saveCodeSnippet(this.form)
                         .then(() => {
                             this.$message({
