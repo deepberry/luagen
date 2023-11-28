@@ -99,7 +99,7 @@ export default {
         },
         data: function () {
             if (this.tab == "lua") {
-                return this.$store.state.comment + "\n" + this.$store.state.lua;
+                return this.$store.state.comment + "\n" + this.$store.state.table + "\n" + this.$store.state.lua;
             }
             if (this.tab == "comment") {
                 return this.$store.state.comment + this.$store.state.table;

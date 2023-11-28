@@ -8,6 +8,7 @@
     <div class="m-code-lua m-code">
         <div class="u-lua" v-if="lua">
             <div class="u-lua-comment">{{ comment }}</div>
+            <div class="u-lua-comment">{{ table }}</div>
             <div class="u-lua-code">{{ lua }}</div>
         </div>
         <div class="u-null" v-else>
@@ -29,6 +30,9 @@ export default {
         },
         comment: function () {
             return this.$store.state.comment;
+        },
+        table: function () {
+            return this.$store.state.table;
         },
         file() {
             return this.$store.state.file;
