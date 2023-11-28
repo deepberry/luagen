@@ -30,6 +30,12 @@ app.config.errorHandler = (err, vm, info) => {
     console.log(err, vm, info);
 };
 
+// icon
+import * as ElementPlusIconsVue from "@element-plus/icons-vue";
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component);
+}
+
 // highlight
 // import "highlight.js/styles/github.css";
 // import "highlight.js/lib/common";

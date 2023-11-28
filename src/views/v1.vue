@@ -33,10 +33,36 @@
                 <div class="m-build">
                     <CodeSnippet :disabled="!file" />
 
-                    <el-button type="primary" size="small" :disabled="!file" :icon="DocumentCopy" @click="copy"
-                        >一键复制</el-button
+                    <el-dropdown
+                        class="u-button"
+                        split-button
+                        trigger="click"
+                        type="primary"
+                        @click="copy"
+                        size="small"
+                        :disabled="!file"
+                        popper-class="m-copy-options"
+                        :hide-on-click="false"
                     >
-                    <el-button type="primary" size="small" @click="build" :disabled="!file" :icon="Position">{{
+                        <el-icon class="u-copy" @click="copy"><DocumentCopy /></el-icon>一键复制
+                        <template #dropdown>
+                            <el-dropdown-menu>
+                                <el-dropdown-item>
+                                    <el-checkbox v-model="copyOptions.comment" size="small" label="Comment" />
+                                </el-dropdown-item>
+                                <el-dropdown-item>
+                                    <el-checkbox v-model="copyOptions.table" size="small" label="Table" />
+                                </el-dropdown-item>
+                                <el-dropdown-item>
+                                    <el-checkbox v-model="copyOptions.lua" size="small" label="Lua" />
+                                </el-dropdown-item>
+                            </el-dropdown-menu>
+                        </template>
+                    </el-dropdown>
+
+                    <!-- <el-button type="primary" v-else @click="copy" size="small" :disabled="!file" icon="DocumentCopy">一键复制</el-button> -->
+
+                    <el-button type="primary" size="small" @click="build" :disabled="!file" icon="Position">{{
                         buildText
                     }}</el-button>
                 </div>
@@ -46,8 +72,6 @@
 </template>
 
 <script>
-import { DocumentCopy, Position } from "@element-plus/icons-vue";
-
 import UploadDrag from "@/components/parser/UploadDrag.vue";
 import FileMeta from "../components/parser/FileMeta.vue";
 import FileDisplay from "@/components/parser/FileDisplay.vue";
@@ -62,7 +86,7 @@ import parse from "@deepberry/luagen-parser/lib/parse.js";
 import { generate, Generator } from "@deepberry/luagen-generator/lib/index.js";
 
 import { mapState } from "vuex";
-import { markRaw } from "vue";
+import { map } from "lodash";
 export default {
     name: "V1Home",
     components: {
@@ -84,12 +108,15 @@ export default {
             // 进度
             loading: false,
 
-            // 图标
-            DocumentCopy: markRaw(DocumentCopy),
-            Position: markRaw(Position),
-
             // tab
             tab: "lua",
+
+            // 复制选项
+            copyOptions: {
+                comment: true,
+                table: true,
+                lua: true,
+            },
         };
     },
     computed: {
@@ -97,9 +124,18 @@ export default {
         buildText: function () {
             return this.hasBuildOnce ? "重新生成" : "生成代码";
         },
+        copyContent: function () {
+            let list = [];
+            map(this.copyOptions, (val, key) => {
+                if (val) {
+                    list.push(this.$store.state[key]);
+                }
+            });
+            return list.join("\n");
+        },
         data: function () {
             if (this.tab == "lua") {
-                return this.$store.state.comment + "\n" + this.$store.state.table + "\n" + this.$store.state.lua;
+                return this.copyContent;
             }
             if (this.tab == "comment") {
                 return this.$store.state.comment + this.$store.state.table;

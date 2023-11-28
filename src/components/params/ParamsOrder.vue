@@ -24,14 +24,11 @@
 </template>
 
 <script>
-import { markRaw } from "vue";
-import { Sort } from "@element-plus/icons-vue";
 import { map } from "lodash";
 import draggable from "vuedraggable";
 export default {
     name: "ParamsOrder",
     components: {
-        Sort: markRaw(Sort),
         draggable,
     },
     data: function () {

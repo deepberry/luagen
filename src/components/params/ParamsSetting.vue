@@ -34,15 +34,9 @@
 </template>
 
 <script>
-import { markRaw } from "vue";
-import { SetUp, ArrowDown, ArrowUp } from "@element-plus/icons-vue";
 export default {
     name: "ParamsSetting",
-    components: {
-        SetUp: markRaw(SetUp),
-        ArrowDown: markRaw(ArrowDown),
-        ArrowUp: markRaw(ArrowUp),
-    },
+    components: {},
     watch: {
         // 监听导入数据变化，根据表头以更新参数列表
         "$store.state.inputHeader": function (list) {

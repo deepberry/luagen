@@ -16,7 +16,7 @@
             <template #dropdown>
                 <el-dropdown-menu>
                     <el-dropdown-item
-                        :icon="BottomRight"
+                        icon="BottomRight"
                         v-for="item in versions"
                         :key="item.key"
                         :command="item.key"
@@ -30,19 +30,14 @@
 </template>
 
 <script>
-import { BottomRight, ArrowDown } from "@element-plus/icons-vue";
-import { markRaw } from "vue";
 import pkg from "@/../project.json";
 export default {
     name: "HeaderVersion",
-    components: {
-        ArrowDown,
-    },
+    components: {},
     data: function () {
         return {
             version: "v1",
             versions: pkg.versions,
-            BottomRight: markRaw(BottomRight),
         };
     },
     watch: {

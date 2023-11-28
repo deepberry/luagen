@@ -22,7 +22,7 @@
                     size="small"
                     v-if="token"
                     @click="visible = true"
-                    :icon="FolderAdd"
+                    icon="FolderAdd"
                     :disabled="disabled"
                     >保存为模版</el-button
                 >
@@ -32,8 +32,6 @@
 </template>
 
 <script>
-import { markRaw } from "vue";
-import { FolderAdd } from "@element-plus/icons-vue";
 import { saveCodeSnippet, getCodeSnippetGroup } from "@/service/codesnippet";
 export default {
     name: "CodeSnippet",
@@ -54,7 +52,6 @@ export default {
             groups: [],
             visible: false,
             token: localStorage.getItem("TOKEN_TITAN_V2"),
-            FolderAdd: markRaw(FolderAdd),
         };
     },
     methods: {

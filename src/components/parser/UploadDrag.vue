@@ -26,12 +26,9 @@
 </template>
 
 <script>
-import { UploadFilled } from "@element-plus/icons-vue";
 export default {
     name: "UploadDrag",
-    components: {
-        UploadFilled,
-    },
+    components: {},
     data: function () {
         return {
             fileList: [],

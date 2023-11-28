@@ -16,19 +16,15 @@
                 <b>{{ file.size }}</b>
             </span>
         </div>
-        <el-button type="danger" :icon="RefreshLeft" @click="reset" size="small">重置</el-button>
+        <el-button type="danger" icon="RefreshLeft" @click="reset" size="small">重置</el-button>
     </div>
 </template>
 
 <script>
-import { markRaw } from "vue";
-import { RefreshLeft } from "@element-plus/icons-vue";
 export default {
     name: "FileInfo",
     data: function () {
-        return {
-            RefreshLeft: markRaw(RefreshLeft),
-        };
+        return {};
     },
     computed: {
         file: function () {
