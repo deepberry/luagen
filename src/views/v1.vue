@@ -197,7 +197,7 @@ export default {
                 },
                 {
                     key: "table",
-                    val: table,
+                    val: "--[[" + table + "]]",
                 },
             ]);
         },
